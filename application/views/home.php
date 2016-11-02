@@ -67,7 +67,7 @@
                   </li>
                   <li><a><i class="fa fa-dashboard"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="form.html">Daftar Member</a></li>
+                      <li><a href="<?php echo base_url();?>index.php/c_member/index" >Daftar Member</a></li>
                       <li><a href="form_advanced.html">Jadwal Pemakaian Lab</a></li>
                       <li><a href="form_validation.html">Informasi</a></li>
                       <li><a href="<?php echo base_url(); ?>index.php/c_dataLab/index">Tambah Ruang</a></li>

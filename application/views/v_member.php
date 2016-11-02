@@ -262,40 +262,7 @@
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
-                    <br />
-                    <form method="post" action="<?php echo base_url()."index.php/C_dataLab/insert" ;?>" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
-
-
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">*Nama Laboratrium <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="first-name" name="nama_lab" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nama Penanggung Jawab<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="last-name" name="nama_png" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <button type="reset" class="btn btn-primary">Reset</button>
-                          <button type="submit" class="btn btn-success">Submit</button>
-                        </div>
-                      </div>
-
-                    </form>
-
-
-
-                </div>
               </div>
               <div class="x_title">
             <div class="x_panel">
@@ -307,103 +274,58 @@
                   <li><a class="close-link"><i class="fa fa-close"></i></a>
                   </li>
                 </ul>
+                <div class="x_content">
+                  <p class="text-muted font-13 m-b-30">
+                    The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
+                  </p>
+                  <table id="datatable-buttons" class="table table-striped table-bordered">
 
-              <div class="x_content">
+                                        <thead>
+                                          <th> No </th>
+                                          <th> ID Client</th>
+                                          <th> Nama </th>
+                                          <th> Jenis Kelamin </th>
+                                          <th> Alamat Domisili</th>
+                                          <th> Alamat Asli</th>
 
-                <table id="datatable-buttons" class="table table-striped table-bordered">
-                  <thead>
+                                          <th> Status Pengguna </th>
+                                          <th> No Telp</th>
+                                          <th> Aksi</th>
 
+
+                                        </thead>
+                    <?php
+                    $no=0;
+                     foreach ($data as $d ){
+                       $no++;
+
+                     ?>
+
+
+
+                    <tbody>
                     <tr>
-                      <th>No</th>
-                      <th>ID Lab</th>
-                      <th>Nama Lab</th>
-                      <th>Penanggung Jawab</th>
-                      <th>Aksi</th>
-
-                    </tr>
-
-
-                  </thead>
-
-
-                  <tbody>
-                    <script>
-                    function tampil(data)
-                    {
-                    var id=document.getElementById(data).textContent;
-                    alert(id);
-                    }
-                    </script>
-                    <?php foreach ($data as $d ) {
-
-                      $no++;?>
-                      <tr>
-                           <td><?php echo $no; ?></td>
-                           <td id="kode<?php echo $no; ?>"><?php echo $d['id_lab']; ?></td>
-                           <td><?php echo $d['nama_lab']; ?></td>
-                           <td><?php echo $d['penanggung_jawab']; ?></td>
-                           <td><a href="<?php echo base_url('index.php/C_dataLab/delete/'.$d['id_lab']) ?>" class="btn btn-danger" name="hapus">Delete</a>||
-                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Update</button></td>
+                      <td><?php echo $no?> </td>
+                      <td> <?php echo $d['id_client'];?></td>
+                      <td> <?php echo $d['nama'];?></td>
+                      <td> <?php echo $d['jenis_kelamin'];?></td>
+                      <td> <?php echo $d['alamat_domisili'];?></td>
+                      <td> <?php echo $d['alamat_asli'];?></td>
+                      <td> <?php echo $d['status'];?></td>
+                      <td> <?php echo $d['no_telp'];?></td>
+                      <td><a href="<?php echo base_url('index.php/c_member/delete/'.$d['id_client']) ?>" class="btn btn-danger" name="hapus">Delete</a>||
+                          <button class="btn btn-primary" data-toggle="modal"  data-toggle="modal" data-target="#myModal" onclick="tampil(\'kode1\)">Update </td>
 
 
 
-
-    </div>
-  </div>
-</div>
-</div>
-    <?php }?>
-  </tr>
-
-
-</tbody>
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Update</button>
-
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+                    </tbody>
+                    <?php }?>
+                  </table>
+                </div>
+                </div>
+                </div>
 
 
-      <div class="modal-header">
-
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <div class="form-body">
-          <div id="fnim" class="form-group">
-
-          </div>
-
-           <div class="form-group">
-            <label class="control-label col-sm-3">Nama</label>
-            <div class="col-md-9">
-              <input name="nama" placeholder="nama" class="form-control" type="text">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="control-label col-sm-3">Alamat</label>
-            <div class="col-md-9">
-              <input name="alamat" placeholder="alamat" class="form-control" type="text">
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-                </table>
-
-              </div>
             </div>
           </div>
 

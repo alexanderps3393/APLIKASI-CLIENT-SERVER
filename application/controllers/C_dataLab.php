@@ -30,7 +30,7 @@ class C_dataLab extends CI_Controller {
   }
 
   public function update($id_lab){
-$res= $this->M_dataLab->getDataLab("where id_lab= ".$id_lab);
+  $res= $this->M_dataLab->getDataLab("where id_lab= ".$id_lab);
 
 
     if($res >=1){
