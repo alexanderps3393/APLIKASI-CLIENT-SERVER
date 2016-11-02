@@ -70,7 +70,7 @@
                       <li><a href="form.html">Daftar Member</a></li>
                       <li><a href="form_advanced.html">Jadwal Pemakaian Lab</a></li>
                       <li><a href="form_validation.html">Informasi</a></li>
-                      <li><a href="form_wizards.html">Report</a></li>
+                      <li><a href="<?php echo base_url(); ?>index.php/c_dataLab/index">Tambah Ruang</a></li>
 
                     </ul>
 

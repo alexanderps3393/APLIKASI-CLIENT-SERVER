@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php $no=0;?>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -233,7 +234,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Data Pemakaian Laboratorium </h2>
+                    <h2>Data Laboratorium </h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -262,36 +263,133 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <p class="text-muted font-13 m-b-30">
-                      Data dibawah ini merupakan data pengguna PIL-APP yang menggunakan ruangan laboratorium.<br>
-                      Data dapat dicetak sesuai format seperti dibawah :
-                    </p>
-                    <table id="datatable-buttons" class="table table-striped table-bordered">
-                      <thead>
-                        <tr>
-                          <th>No</th>
-                          <th>ID Pengguna</th>
-                          <th>Hari/Tanggal Pakai</th>
-                          <th>Jam Pemakaian</th>
-                          <th>Keterangan</th>
-                          <th>Ruang</th>
-                        </tr>
-                      </thead>
+                    <br />
+                    <form method="post" action="<?php echo base_url()."index.php/C_dataLab/insert" ;?>" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
 
-                      <tbody>
 
-                      </tbody>
-                    </table>
-                  </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">*Nama Laboratrium <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="first-name" name="nama_lab" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nama Penanggung Jawab<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="last-name" name="nama_png" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                          <button type="reset" class="btn btn-primary">Reset</button>
+                          <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                      </div>
+
+                    </form>
+
+
+
                 </div>
               </div>
+              <div class="x_title">
+            <div class="x_panel">
+                <h2>Lis Data Lab</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                  </li>
 
+                  <li><a class="close-link"><i class="fa fa-close"></i></a>
+                  </li>
+                </ul>
+
+              <div class="x_content">
+
+                <table id="datatable-buttons" class="table table-striped table-bordered">
+                  <thead>
+
+                    <tr>
+                      <th>No</th>
+                      <th>ID Lab</th>
+                      <th>Nama Lab</th>
+                      <th>Penanggung Jawab</th>
+                      <th>Aksi</th>
+
+                    </tr>
+
+
+                  </thead>
+
+
+                  <tbody>
+                    <script>
+                    function tampil(data)
+                    {
+                    var id=document.getElementById(data).textContent;
+                    alert(id);
+                    }
+                    </script>
+                    <?php foreach ($data as $d ) {
+
+                      $no++;?>
+                      <tr>
+                           <td><?php echo $no; ?></td>
+                           <td id="kode<?php echo $no; ?>"><?php echo $d['id_lab']; ?></td>
+                           <td><?php echo $d['nama_lab']; ?></td>
+                           <td><?php echo $d['penanggung_jawab']; ?></td>
+                           <td><a href="<?php echo base_url('index.php/C_dataLab/delete/'.$d['id_lab']) ?>" class="btn btn-danger" name="hapus">Delete</a>||
+
+
+                           <button class="btn btn-primary" data-toggle="modal"  data-toggle="modal" data-target="#myModal" onclick="tampil(\'kode1\)">Update </td>
+
+                  <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+
+      isi
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href ="<?php echo base_url('index.php/C_dataLab/update/'.$d['id_lab']) ?>" class="btn btn-primary" name="update" data-toggle="modal" data-target="#myModal">Update</a>
+      </div>
+    </div>
+  </div>
+</div>
+    <?php }?>
+  </tr>
+
+
+</tbody>
+                </table>
 
               </div>
             </div>
           </div>
+
+
+
+          </div>
         </div>
+      </div>
+    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- /page content -->
 
         <!-- footer content -->

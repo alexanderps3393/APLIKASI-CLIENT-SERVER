@@ -8,10 +8,7 @@ class C_server extends CI_Controller {
 	{
 		$this->load->view('home');
 	}
-	public function  dataPemakai(){
-		$this->load->view('v_pemakai');
-	}
-	public function peminjam(){
-		$this->load->view('v_peminjam');
-	}
+
+
+
 }
